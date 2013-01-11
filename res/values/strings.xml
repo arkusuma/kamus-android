@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kamus</string>
+    <string name="menu_en_to_id">English &#8594; Indonesia</string>
+    <string name="menu_id_to_en">Indonesia &#8594; English</string>
+    <string name="menu_about">About</string>
+    <string name="menu_share">Share</string>
+    <string name="hint_query">Type a word or a sentence</string>
+    <string name="share_via">Share Via</string>
+    <string name="share_subject">Kamus Inggris Indonesia</string>
+    <string name="share_body">Butuh Kamus offline di Androidmu?\nIni dia yang kamu cari:\nhttps://play.google.com/store/apps/details?id=com.grafian.kamus</string>
+    <string name="about">About</string>
+    <string name="visit_web">Visit us</string>
+    <string name="more_apps">More apps</string>
+    <string name="okay">Okay cool!</string>
+    <string name="copyright">Grafian Software Crafter 2013\nBandung, Indonesia</string>
+    <string name="website">Website: http://grafian.com</string>
+
+</resources>
