@@ -1,9 +1,14 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <item
-        android:id="@+id/menu_dict_type"
-        android:showAsAction="always"
-        android:title="@string/menu_en_to_id"/>
+        android:id="@+id/en_to_id"
+        android:title="@string/en_to_id"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/id_to_en"
+        android:title="@string/id_to_en"
+        app:showAsAction="always|withText"/>
     <item
         android:id="@+id/menu_share"
         android:showAsAction="never"

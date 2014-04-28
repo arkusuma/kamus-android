@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" >
+    xmlns:ads="http://schemas.android.com/apk/res-auto" >
 
-    <com.google.ads.AdView
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="a150efbc6d9b8cf"
-        ads:loadAdOnCreate="true" />
+        ads:adSize="BANNER"
+        ads:adUnitId="6bcd50400d5f45e7" />
 
 </merge>

@@ -1,0 +1,7 @@
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/result_list"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_list"
+    android:cacheColorHint="@color/bg_list"
+    android:divider="@null" />

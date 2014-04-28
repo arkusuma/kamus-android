@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.grafian.kamus"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.grafian.kamus2"
+    android:versionCode="2"
+    android:versionName="2.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Sherlock.Light" >
+        android:theme="@style/Theme.AppCompat.Light" >
         <activity
-            android:name="com.grafian.kamus.MainActivity"
+            android:name="com.grafian.kamus2.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +28,73 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- AdMob -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
-            android:name="com.google.ads.AdActivity"
+            android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <!-- End of AdMob -->
+
+
+        <!-- InMobi -->
+        <activity
+            android:name="com.inmobi.androidsdk.IMBrowserActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
+            android:hardwareAccelerated="true" />
+        <!-- End of InMobi -->
+
+
+        <!-- mMedia -->
+        <activity
+            android:name="com.millennialmedia.android.MMActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <!-- End of mMedia -->
+
+
+        <!-- Vserv -->
+        <activity
+            android:name="mobi.vserv.android.ads.VservAdManager"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
+            android:launchMode="singleTop"
+            android:multiprocess="true"
+            android:process=":vserv"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="mobi.vserv.org.ormma.view.Browser"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="mobi.vserv.org.ormma.view.OrmmaActionHandler"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
+            android:windowSoftInputMode="adjustPan" />
+        <!-- End of Vserv -->
+
+
+        <!-- AppBrain AppLift SDK -->
+        <activity
+            android:name="com.appbrain.AppBrainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <receiver
+            android:name="com.appbrain.ReferrerReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="forward.InMobi"
+                android:value="com.inmobi.commons.analytics.androidsdk.IMAdTrackerReceiver" />
+        </receiver>
+
+        <service android:name="com.appbrain.AppBrainService" />
+        <!-- End of AppLift SDK -->
     </application>
 
 </manifest>

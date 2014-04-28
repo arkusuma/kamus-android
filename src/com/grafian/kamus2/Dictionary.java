@@ -1,4 +1,4 @@
-package com.grafian.kamus;
+package com.grafian.kamus2;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
