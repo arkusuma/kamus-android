@@ -12,6 +12,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -27,20 +28,23 @@ import android.view.ViewConfiguration;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.appbrain.AppBrain;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.millennialmedia.android.MMSDK;
 
 public class MainActivity extends ActionBarActivity {
 
 	final public static int EN_TO_ID = 0;
 	final public static int ID_TO_EN = 1;
 
+	private Handler mHandler = new Handler();
+	private LinearLayout mAdContainer;
 	private AdView mAdView;
 	private EditText mQuery;
 	private ViewPager mViewPager;
@@ -50,8 +54,6 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		AppBrain.init(this);
 
 		mQuery = (EditText) findViewById(R.id.query);
 		mQuery.addTextChangedListener(onQueryChange);
@@ -108,24 +110,44 @@ public class MainActivity extends ActionBarActivity {
 		super.onDestroy();
 	}
 
-	private void setupAd() {
-		MMSDK.initialize(this);
-		mAdView = (AdView) findViewById(R.id.ad);
+	private void createAd() {
+		mAdView = new AdView(this);
+		mAdView.setAdSize(AdSize.BANNER);
+		mAdView.setAdUnitId(getResources().getString(R.string.ad_unit_banner));
 		mAdView.setAdListener(new AdListener() {
 			@Override
 			public void onAdLoaded() {
-				mAdView.setVisibility(View.VISIBLE);
+				mAdContainer.setVisibility(View.VISIBLE);
 			}
 
 			@Override
 			public void onAdFailedToLoad(int errorCode) {
-				mAdView.setVisibility(View.GONE);
+				mAdContainer.removeAllViews();
+				mAdView.destroy();
+				mAdView = null;
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						createAd();
+					}
+				}, 60000);
+
 			}
 		});
+
+		mAdContainer.addView(mAdView);
+		mAdContainer.setVisibility(View.GONE);
+
 		AdRequest adRequest = new AdRequest.Builder()
 				.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
 				.build();
 		mAdView.loadAd(adRequest);
+	}
+
+	private void setupAd() {
+		AppBrain.init(this);
+		mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
+		createAd();
 	}
 
 	private void forceOverflowMenu() {
@@ -177,7 +199,7 @@ public class MainActivity extends ActionBarActivity {
 		} catch (NameNotFoundException e) {
 			version = "";
 		}
-		title.setText(title.getText().toString() + " " + version);
+		title.setText(title.getText().toString() + " v" + version);
 		new AlertDialog.Builder(MainActivity.this)
 				.setCustomTitle(about)
 				.setPositiveButton(R.string.more_apps, onMoreApps)

@@ -11,7 +11,7 @@
     <string name="hint_query">Type a word or a sentence</string>
     <string name="share_via">Share Via</string>
     <string name="share_subject">Kamus Inggris Indonesia</string>
-    <string name="share_body">Butuh Kamus offline di Androidmu?\nIni dia yang kamu cari:\nhttps://play.google.com/store/apps/details?id=%s</string>
+    <string name="share_body">Kamus - Offline English Indonesia Dictionary\nhttps://play.google.com/store/apps/details?id=%s</string>
     <string name="about">About</string>
     <string name="visit_web">Visit us</string>
     <string name="more_apps">More apps</string>
