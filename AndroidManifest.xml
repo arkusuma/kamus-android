@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grafian.kamus2"
-    android:versionCode="3"
-    android:versionName="2.0.1" >
+    android:versionCode="4"
+    android:versionName="2.0.2" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -29,6 +29,22 @@
             </intent-filter>
         </activity>
 
+        <!-- MoPub -->
+        <activity
+            android:name="com.mopub.mobileads.MoPubActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity
+            android:name="com.mopub.mobileads.MraidActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity
+            android:name="com.mopub.common.MoPubBrowser"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity
+            android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <!-- End of MoPub -->
+
+
         <!-- AdMob -->
         <meta-data
             android:name="com.google.android.gms.version"
@@ -52,28 +68,8 @@
         <activity
             android:name="com.millennialmedia.android.MMActivity"
             android:configChanges="keyboardHidden|orientation|keyboard"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- End of mMedia -->
-
-
-        <!-- Vserv -->
-        <activity
-            android:name="mobi.vserv.android.ads.VservAdManager"
-            android:configChanges="touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
-            android:launchMode="singleTop"
-            android:multiprocess="true"
-            android:process=":vserv"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="mobi.vserv.org.ormma.view.Browser"
-            android:configChanges="touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="mobi.vserv.org.ormma.view.OrmmaActionHandler"
-            android:configChanges="touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
-            android:windowSoftInputMode="adjustPan" />
-        <!-- End of Vserv -->
 
 
         <!-- AppBrain AppLift SDK -->

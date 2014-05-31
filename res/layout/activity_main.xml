@@ -20,12 +20,10 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <LinearLayout
-        android:id="@+id/ad_container"
-        android:layout_width="match_parent"
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/ad_view"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_list"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal" />
+        android:background="@color/bg_list" />
 
 </LinearLayout>
